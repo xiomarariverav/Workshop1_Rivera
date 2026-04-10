@@ -21,11 +21,29 @@ public class Calculator1 {
 
         int loanTerm = scanner.nextInt();
 
+        // Find Monthly Rate and Number of Monthly Payments
+
         double monthlyRate = annualRate/ (100*12);
 
         int numberOfMonthlyPayments = loanTerm * 12;
 
+        // M = P × (i * (1 + i)^n / ( (1 + i)^n ) - 1)
+
         double numerator = monthlyRate * Math.pow(1 + monthlyRate,numberOfMonthlyPayments);
+        double denominator = Math.pow(1 + monthlyRate,numberOfMonthlyPayments) -1;
+
+        double monthlyPayment = principal * (numerator / denominator);
+
+        //Total Interest = (M×n)−P
+
+        double totalInterestPayment = ((monthlyPayment * numberOfMonthlyPayments) - principal);
+
+        System.out.println(" Your monthly payment is " + monthlyPayment + ". You total interest payment will be " + totalInterestPayment + "."
+                );
+
+
+
+
 
 
 
